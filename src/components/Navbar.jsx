@@ -141,28 +141,28 @@ const Navbar = () => {
   
           {/* Desktop Nav Items */}
           <NavItems>
-            <NavLink href="#About">About</NavLink>
-            <NavLink href="#Skills">Skill</NavLink>
-            <NavLink href="#Projects">Projects</NavLink>
-            <NavLink href="#Skills">Hobby</NavLink>
-            <NavLink href="#Contact">Contact</NavLink>
+            <NavLink href="#About">Giới Thiệu</NavLink>
+            <NavLink href="#Skills">Kỹ Năng</NavLink>
+            <NavLink href="#Projects">Dự Án</NavLink>
+            <NavLink href="#Skills">Sở Thích</NavLink>
+            <NavLink href="#Contact">Liên Hệ</NavLink>
           </NavItems>
   
           {/* Mobile Menu */}
           {isOpen && (
             <MobileMenu isOpen={isOpen}>
-              <NavLink href="#About">About</NavLink>
-              <NavLink href="#Skills">Skill</NavLink>
-              <NavLink href="#Projects">Projects</NavLink>
-              <NavLink href="#Skills">Hobby</NavLink>
-              <NavLink href="#Contact">Contact</NavLink>
+              <NavLink href="#About">Giới Thiệu</NavLink>
+              <NavLink href="#Skills">Kỹ Năng</NavLink>
+              <NavLink href="#Projects">Dự Án</NavLink>
+              <NavLink href="#Skills">Sở Thích</NavLink>
+              <NavLink href="#Contact">Liên Hệ</NavLink>
               <GitHubButton href={Bio.github} target="_blank"
                 style={{
                     background: theme.primary,
                     color: theme.text_primary,
                 }}
               >
-              GitHub Profile
+              GitHub 
             </GitHubButton>
             </MobileMenu>
           )}
@@ -170,7 +170,7 @@ const Navbar = () => {
           {/* Button Container */}
           <ButtonContainer>
             <GitHubButton href={Bio.github} target="_blank">
-              GitHub Profile
+              GitHub
             </GitHubButton>
           </ButtonContainer>
         </NavbarContainer>

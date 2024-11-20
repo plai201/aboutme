@@ -25,12 +25,12 @@ const OrbitWithIcons = () => {
 
   // Cập nhật đường dẫn của các icon
   const icons = [
-    { uri: 'fb.png', link: 'https://facebook.com' },
-    { uri: 'instagram.png', link: 'https://instagram.com' },
+    { uri: 'fb.png', link: 'https://www.facebook.com/nttpp22' },
+    { uri: 'instagram.png', link: 'https://www.instagram.com/tugthnh.0/' },
     { uri: 'phone.png', link: 'tel:+84969503077' }, // Sử dụng tel: để mở ứng dụng gọi điện
     { uri: 'linkedin.png', link: 'https://linkedin.com' },
-    { uri: 'zalo.png', link: 'https://zalo.me' },
-    { uri: 'tiktok.webp', link: 'https://twitter.com' }, // Thêm icon Twitter
+    { uri: 'zalo.png', link: 'https://zalo.me/0969503077' },
+    { uri: 'tiktok.webp', link: 'https://www.tiktok.com/@plai.201' }, // Thêm icon Twitter
   ];
 
   // Tải textures

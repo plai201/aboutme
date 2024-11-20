@@ -86,11 +86,11 @@ const Footer = () => {
       <FooterWrapper>
         {/* <Logo>Logo</Logo> */}
         <Nav>
-          <NavLink href="#About">About</NavLink>
-          <NavLink href="#Skills">Skills</NavLink>
-          <NavLink href="#Experience">Experience</NavLink>
-          <NavLink href="#Projects">Projects</NavLink>
-          <NavLink href="#Contact">Contact</NavLink>
+          <NavLink href="#About">Giới Thiệu</NavLink>
+          <NavLink href="#Skills">Kỹ Năng</NavLink>
+          <NavLink href="#Projects">Dự Án</NavLink>
+          <NavLink href="#Skills">Sở Thích</NavLink>
+          <NavLink href="#Contact">Liên Hệ</NavLink>
         </Nav>
         <SocialMediaIcons>
           <SocialMediaIcon href={Bio.facebook} target="display">

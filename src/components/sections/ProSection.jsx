@@ -133,7 +133,6 @@ const ResumeButton = styled.a`
   margin-top: 24px; /* Tạo khoảng cách phía trên */
   margin-bottom: 16px; /* Tạo khoảng cách phía dưới */
 
-
   &:hover {
     background-color: ${({ theme }) => theme.text_primary || "#fff"};
     color: ${({ theme }) => theme.primary || "#007BFF"};
@@ -143,6 +142,7 @@ const ResumeButton = styled.a`
   &:active {
     transform: translateY(0);
   }
+
   @media screen and (max-width: 960px) {
     padding: 10px 20px; /* Giảm kích thước nút */
     font-size: 0.9rem; /* Giảm kích thước chữ */
@@ -222,9 +222,11 @@ const ProSection = () => {
             <SubTitle>{Bio.description}</SubTitle> {/* Hiển thị mô tả từ dữ liệu Bio */}
           </motion.div>
 
-          {/* Nút xem CV */}
-          <ResumeButton>Book now</ResumeButton>
-        </ProLeftContainer>
+          {/* Nút gọi */}
+            <ResumeButton href="tel:+84969503077">
+              Book now
+          </ResumeButton> 
+             </ProLeftContainer>
 
         {/* Phần bên phải - Hiển thị ảnh với hiệu ứng nghiêng */}
         <ProRightContainer>

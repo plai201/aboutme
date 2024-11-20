@@ -116,10 +116,10 @@ const Tooltip = styled.div`
 const Skills = () => {
   return (
     <Container id="Skills">
-      <Title>Skills</Title>
+      <Title>Kỹ Năng</Title>
       <Description>
-        Here are some of my skills I have been working on over the past 3
-        years.
+        {/* Here are some of my skills I have been working on over the past 3
+        years. */}
       </Description>
       <SkillsGrid>
         {skills.map((skill, index) => (

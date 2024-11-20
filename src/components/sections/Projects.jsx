@@ -95,14 +95,14 @@ const Projects = () => {
   return (
     <Container id="Projects">
       <Wrapper>
-        <Title>Projects</Title>
+        <Title>Dự Án</Title>
         <Desc
           style={{
             marginBottom: "40px",
           }}
         >
-          I have worked on a wide range of projects. From web apps to android
-          apps. Here are some of my projects.
+          {/* I have worked on a wide range of projects. From web apps to android
+          apps. Here are some of my projects. */}
         </Desc>
 
         <ToggleButtonGroup>

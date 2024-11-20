@@ -110,7 +110,7 @@ const Contact = () => {
 
   return (
     <Container id="Contact">
-      <Title>Contact</Title>
+      <Title>Liên Hệ</Title>
       <EarthWrapper>
         <EarthCanvas />
       </EarthWrapper>
