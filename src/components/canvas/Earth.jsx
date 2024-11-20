@@ -1,94 +1,94 @@
-import React, { Suspense, useRef, useState, useEffect } from 'react';
+import React, { Suspense, useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Component để render mô hình Earth
 const Earth = () => {
-  const { scene } = useGLTF('./planet/scene.gltf'); // Đảm bảo đường dẫn chính xác đến file GLTF
+  const { scene } = useGLTF('./planet/scene.gltf');
   return <primitive object={scene} scale={3} position-y={0} />;
 };
 
-// Component cho vòng xích đạo với biểu tượng
-const OrbitWithIcons = () => {
+const OrbitWithIcons = ({ setAutoRotate }) => {
   const groupRef = useRef();
   const [textures, setTextures] = useState([]);
-  const [isHovered, setIsHovered] = useState(null); // Trạng thái kiểm soát hover
-  const [stopRotation, setStopRotation] = useState(false); // Dừng quay khi hover
+  const [isHovered, setIsHovered] = useState(null);
+  const [scales, setScales] = useState(new Array(6).fill(1)); // Mảng lưu trữ scale của các icon
 
-  // Xoay quỹ đạo (dừng quay nếu hover)
-  useFrame(() => {
-    if (!stopRotation && groupRef.current) {
-      groupRef.current.rotation.y += 0.01; // Tốc độ xoay vòng
-    }
-  });
-
-  // Cập nhật đường dẫn của các icon
-  const icons = [
+  const icons = useMemo(() => [
     { uri: 'fb.png', link: 'https://www.facebook.com/nttpp22' },
     { uri: 'instagram.png', link: 'https://www.instagram.com/tugthnh.0/' },
-    { uri: 'phone.png', link: 'tel:+84969503077' }, // Sử dụng tel: để mở ứng dụng gọi điện
+    { uri: 'phone.png', link: 'tel:+84969503077' },
     { uri: 'linkedin.png', link: 'https://linkedin.com' },
     { uri: 'zalo.png', link: 'https://zalo.me/0969503077' },
-    { uri: 'tiktok.webp', link: 'https://www.tiktok.com/@plai.201' }, // Thêm icon Twitter
-  ];
+    { uri: 'tiktok.webp', link: 'https://www.tiktok.com/@plai.201' },
+  ], []);
 
-  // Tải textures
+  // Tải textures khi cần
   useEffect(() => {
     const textureLoader = new THREE.TextureLoader();
-    const loadedTextures = icons.map(icon => textureLoader.load(`./planet/textures/${icon.uri}`));
+    const loadedTextures = icons.map(icon => textureLoader.load(`./planet/textures/${icon.uri}`, (texture) => {
+      texture.anisotropy = 16; // Tăng chất lượng texture với anisotropic filtering
+      texture.minFilter = THREE.LinearMipmapLinearFilter; // Sử dụng mipmap cho texture
+    }));
     setTextures(loadedTextures);
   }, [icons]);
 
   // Hàm xử lý sự kiện click
   const handleClick = (url) => {
     if (url.startsWith('tel:')) {
-      window.location.href = url; // Mở ứng dụng gọi điện thoại khi nhấn vào icon phone
+      window.location.href = url;
     } else {
-      window.open(url, '_blank'); // Mở liên kết trong tab mới đối với các liên kết khác
+      window.open(url, '_blank');
     }
   };
 
-  // Bán kính vòng tròn
   const radius = 6;
 
   // Xử lý hover và highlight icon
   const handlePointerOver = (index) => {
     setIsHovered(index);
-    setStopRotation(true); // Dừng xoay khi hover
+    setAutoRotate(false); // Dừng quay khi hover vào icon
   };
 
   const handlePointerOut = () => {
     setIsHovered(null);
-    setStopRotation(false); // Tiếp tục xoay khi không hover
+    setAutoRotate(true); // Tiếp tục quay khi không hover
   };
+
+  // Cập nhật scale một cách mượt mà
+  useFrame(() => {
+    if (isHovered !== null) {
+      setScales(prevScales => prevScales.map((scale, index) => 
+        index === isHovered ? Math.min(scale + 0.05, 1.5) : scale
+      ));
+    } else {
+      setScales(prevScales => prevScales.map(scale => Math.max(scale - 0.05, 1)));
+    }
+  });
 
   return (
     <group ref={groupRef}>
       {icons.map((icon, index) => {
-        // Tính toán vị trí của mỗi icon trên vòng tròn
-        const angle = (index / icons.length) * Math.PI * 2; // Tính toán góc để chia đều các icon trên vòng tròn
+        const angle = (index / icons.length) * Math.PI * 2;
         const position = [radius * Math.cos(angle), 0, radius * Math.sin(angle)];
-
-        const scale = isHovered === index ? 1.5 : 1; // Nổi bật icon khi hover
 
         return (
           <mesh
             key={index}
             position={position}
-            onClick={() => handleClick(icon.link)} // Xử lý sự kiện nhấp chuột
-            onPointerOver={() => handlePointerOver(index)} // Dừng quay và làm nổi bật icon khi hover
-            onPointerOut={handlePointerOut} // Tiếp tục quay khi không hover
-            scale={[scale, scale, scale]} // Thay đổi kích thước khi hover
+            onClick={() => handleClick(icon.link)}
+            onPointerOver={() => handlePointerOver(index)}
+            onPointerOut={handlePointerOut}
+            scale={[scales[index], scales[index], scales[index]]}  // Sử dụng scale mượt mà
           >
-            {/* Sử dụng planeGeometry để icon không bị bóp méo */}
-            <planeGeometry args={[2, 2]} /> {/* Điều chỉnh kích thước của plane */}
+            <planeGeometry args={[2, 2]} />
             <meshStandardMaterial
-              map={textures[index]} // Áp dụng texture đã tải
-              transparent={true} // Cho phép nền trong suốt
-              opacity={1} // Đảm bảo icon rõ ràng
-              emissive={isHovered === index ? new THREE.Color(0.1, 0.1, 1) : new THREE.Color(0, 0, 0)} // Nổi bật với màu xanh khi hover
-              emissiveIntensity={isHovered === index ? 1 : 0} // Điều chỉnh độ sáng của hiệu ứng phát sáng
+              map={textures[index]}
+              transparent={true}
+              opacity={1}
+              emissive={isHovered === index ? new THREE.Color(0.1, 0.1, 1) : new THREE.Color(0, 0, 0)}
+              emissiveIntensity={isHovered === index ? 1 : 0}
             />
           </mesh>
         );
@@ -97,8 +97,9 @@ const OrbitWithIcons = () => {
   );
 };
 
-// Canvas để render Earth và quỹ đạo
 const EarthCanvas = () => {
+  const [autoRotate, setAutoRotate] = useState(true); // Trạng thái autoRotate
+
   return (
     <Canvas
       shadows
@@ -109,12 +110,12 @@ const EarthCanvas = () => {
         fov: 45,
         near: 0.1,
         far: 200,
-        position: [-8, 5, 10], // Điều chỉnh góc nhìn
+        position: [-8, 5, 10],
       }}
     >
       <Suspense fallback={null}>
         <OrbitControls
-          autoRotate
+          autoRotate={autoRotate} // Điều chỉnh autoRotate dựa trên trạng thái
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
@@ -122,7 +123,7 @@ const EarthCanvas = () => {
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
         <Earth />
-        <OrbitWithIcons /> {/* Thêm quỹ đạo với biểu tượng */}
+        <OrbitWithIcons setAutoRotate={setAutoRotate} /> {/* Truyền hàm setAutoRotate */}
       </Suspense>
       <Preload all />
     </Canvas>

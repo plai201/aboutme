@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { LazyLoadImage } from 'react-lazy-load-image-component';  // Import LazyLoadImage
 
 const Card = styled.div`
   width: 330px;
@@ -98,22 +99,38 @@ const Button = styled.a`
 const ProjectCard = ({ project }) => {
   return (
     <Card>
-      <Image src={project.image} />
-      <Tags></Tags>
-      <Details>
-        <Title>{project.title}</Title>
-        <Date>{project.date}</Date>
-        <Description>{project.description}</Description>
-      </Details>
-      <Members>
-        {project.member?.map((member) => (
-          <Avatar src={member.img} />
-        ))}
-      </Members>
-      <Button href={project.github} target="_blank">
-        Xem chi tiết
-      </Button>
-    </Card>
+  {/* Sử dụng LazyLoadImage để tải ảnh chỉ khi cần thiết */}
+  <LazyLoadImage
+    src={project.image} // Đường dẫn ảnh
+    alt={project.title}  // Alt text cho ảnh, giúp SEO và truy cập dễ dàng hơn
+    effect="blur"  // Tạo hiệu ứng mờ khi ảnh đang được tải
+    placeholderSrc="./images/placeholder.png"  // Ảnh placeholder
+    width="100%" // Đảm bảo ảnh có kích thước đầy đủ trong Card
+    height="180px" // Tự động điều chỉnh chiều cao của ảnh theo tỷ lệ
+    background-color = "${({ theme }) => theme.white}"
+    border-radius = "10px"
+    box-shadow= "0 0 16px 2px rgba(0, 0, 0, 0.3)"
+  />
+  
+  <Tags></Tags>  {/* Nếu có tags, vẫn giữ */}
+  
+  <Details>
+    <Title>{project.title}</Title>
+    <Date>{project.date}</Date>
+    <Description>{project.description}</Description>
+  </Details>
+  
+  <Members>
+    {/* Render thành viên với key để tối ưu hóa việc cập nhật và tránh cảnh báo trong React */}
+    {project.member?.map((member, index) => (
+      <Avatar key={index} src={member.img} alt={member.name} />
+    ))}
+  </Members>
+  
+  <Button href={project.github} target="_blank">
+    Xem chi tiết
+  </Button>
+</Card>
   );
 };
 

@@ -6,7 +6,6 @@ import ProSection from "./components/sections/ProSection";
 import Skills from "./components/sections/Skills";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
-import StartCanvas from "./components/canvas/Stars";
 import Projects from "./components/sections/Projects";
 
 const Body = styled.div`
@@ -36,7 +35,6 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Body>
-        <StartCanvas />
         <div>
           <ProSection />
           <Wrapper>

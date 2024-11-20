@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { useTheme } from "styled-components";
 import { Link as LinkR} from "react-router-dom";
 import { Bio } from "../data/constants";
@@ -123,22 +123,34 @@ const GitHubButton = styled.a`
   }
 `;
 
-
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const theme = useTheme();
-  
+    const menuRef = useRef(null);
+
+    // Close the mobile menu when clicking outside
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+          setIsOpen(false);
+        }
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
     return (
       <Nav>
         <NavbarContainer>
           {/* Logo */}
           <NavLogo to="/"></NavLogo>
-  
+
           {/* Mobile Icon */}
           <MobileIcon onClick={() => setIsOpen(!isOpen)}>
             <MenuRounded style={{ color: "inherit" }} />
           </MobileIcon>
-  
+
           {/* Desktop Nav Items */}
           <NavItems>
             <NavLink href="#About">Giới Thiệu</NavLink>
@@ -147,26 +159,24 @@ const Navbar = () => {
             <NavLink href="#Skills">Sở Thích</NavLink>
             <NavLink href="#Contact">Liên Hệ</NavLink>
           </NavItems>
-  
+
           {/* Mobile Menu */}
-          {isOpen && (
-            <MobileMenu isOpen={isOpen}>
-              <NavLink href="#About">Giới Thiệu</NavLink>
-              <NavLink href="#Skills">Kỹ Năng</NavLink>
-              <NavLink href="#Projects">Dự Án</NavLink>
-              <NavLink href="#Skills">Sở Thích</NavLink>
-              <NavLink href="#Contact">Liên Hệ</NavLink>
-              <GitHubButton href={Bio.github} target="_blank"
-                style={{
-                    background: theme.primary,
-                    color: theme.text_primary,
-                }}
-              >
-              GitHub 
+          <MobileMenu ref={menuRef} isOpen={isOpen}>
+            <NavLink href="#About" onClick={() => setIsOpen(false)}>Giới Thiệu</NavLink>
+            <NavLink href="#Skills" onClick={() => setIsOpen(false)}>Kỹ Năng</NavLink>
+            <NavLink href="#Projects" onClick={() => setIsOpen(false)}>Dự Án</NavLink>
+            <NavLink href="#Skills" onClick={() => setIsOpen(false)}>Sở Thích</NavLink>
+            <NavLink href="#Contact" onClick={() => setIsOpen(false)}>Liên Hệ</NavLink>
+            <GitHubButton href={Bio.github} target="_blank"
+              style={{
+                background: theme.primary,
+                color: theme.text_primary,
+              }}
+            >
+              GitHub
             </GitHubButton>
-            </MobileMenu>
-          )}
-  
+          </MobileMenu>
+
           {/* Button Container */}
           <ButtonContainer>
             <GitHubButton href={Bio.github} target="_blank">
@@ -176,6 +186,6 @@ const Navbar = () => {
         </NavbarContainer>
       </Nav>
     );
-  };
+};
 
 export default Navbar;
