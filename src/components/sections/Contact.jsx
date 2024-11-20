@@ -115,10 +115,10 @@ const Contact = () => {
         <EarthCanvas />
       </EarthWrapper>
       <Form ref={form} onSubmit={handleSubmit}>
-        <Input type="email" placeholder="Your Email" name="from_email" required />
-        <Input type="text" placeholder="Your Name" name="from_name" required />
-        <Input type="text" placeholder="Subject" name="subject" required />
-        <Textarea placeholder="Message" name="message" rows="4" required />
+        <Input type="email" placeholder="Email" name="from_email" required />
+        <Input type="text" placeholder="Họ Và Tên" name="from_name" required />
+        <Input type="text" placeholder="Tiêu đề" name="subject" required />
+        <Textarea placeholder="" name="message" rows="4" required />
         <Button type="submit" value="Send" />
       </Form>
     </Container>
