@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+/* css header */
+/* Tổng thể */
+header {
+  background-color: #1c1c1e; /* Màu nền tối */
+  border-bottom: 3px solid #a97822; /* Viền dưới */
+}
+header {
+  background-color: #a97822 !important;
+}
+
+/* Logo */
+.navbar-brand {
+  color: #a97822 !important; /* Màu logo */
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Tagline */
+.small {
+  color: #e6c18b !important; /* Màu tagline */
+}
+
+/* Menu */
+.nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #a97822 !important; /* Màu nhấn khi hover */
+}
+
+/* Mobile menu toggle */
+.navbar-toggler-icon {
+  filter: invert(1); /* Màu trắng cho biểu tượng menu */
+}
