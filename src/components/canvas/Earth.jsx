@@ -38,7 +38,7 @@ const OrbitWithIcons = () => {
     const textureLoader = new THREE.TextureLoader();
     const loadedTextures = icons.map(icon => textureLoader.load(`./planet/textures/${icon.uri}`));
     setTextures(loadedTextures);
-  }, []);
+  }, [icon]);
 
   // Hàm xử lý sự kiện click
   const handleClick = (url) => {
