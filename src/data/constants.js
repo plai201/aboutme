@@ -10,10 +10,10 @@ export const Bio = {
     github: "https://github.com/plai201",
     resume:
       "https://drive.google.com/file/d/1txFKZD3LNIXMc329jD9c995AU8LItOXK/view?usp=drive_link",
-    linkedin: "https://www.linkedin.com/in/rishav-chanda-b89a791b3/",
-    twitter: "https://twitter.com/RishavChanda",
-    insta: "https://www.instagram.com/rishav_chanda/",
-    facebook: "https://www.facebook.com/rishav.chanda.165/",
+    linkedin: "https://zalo.me/0969503077",
+    twitter: "https://www.tiktok.com/@plai.201?lang=vi-VN",
+    insta: "https://www.instagram.com/tugthnh.0/",
+    facebook: "https://www.facebook.com/nttpp22",
   };
   
   export const skills = [

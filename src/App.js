@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./utils/Themes";
 import Navbar from "./components/Navbar";
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import ProSection from "./components/sections/ProSection";
 import Skills from "./components/sections/Skills";
 import Contact from "./components/sections/Contact";
