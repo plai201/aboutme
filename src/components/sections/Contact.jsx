@@ -43,11 +43,10 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 8px;
-    max-width: 400px;
+  max-width: 400px;
     }   
-  @media (max-width: 500px){
-    max-width: 300px;
-
+  @media (max-width: 768px){
+    max-width: 250px;
     }
 `;
 
@@ -118,8 +117,8 @@ const Contact = () => {
         <Input type="email" placeholder="Email" name="from_email" required />
         <Input type="text" placeholder="Họ Và Tên" name="from_name" required />
         <Input type="text" placeholder="Tiêu đề" name="subject" required />
-        <Textarea placeholder="" name="message" rows="4" required />
-        <Button type="submit" value="Send" />
+        <Textarea placeholder="Nội dung" name="message" rows="4" required />
+        <Button type="submit" value="Gửi Email" />
       </Form>
     </Container>
   );
