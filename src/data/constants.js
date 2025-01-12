@@ -233,6 +233,25 @@ export const Bio = {
       webapp: "https://dr4you.vn/",
     },
     {
+      id: 16,
+      title: "Đông Phương Đường",
+      date: "Jan 2024 - Present",
+      description:
+        "Phòng khám Y học cổ truyền Đông Phương Đường tự hào là địa chỉ đáng tin cậy trong việc khám và chữa bệnh bằng phương pháp y học cổ truyền. Với đội ngũ y bác sĩ giàu kinh nghiệm, tận tâm cùng các bài thuốc gia truyền, phòng khám mang đến giải pháp chữa trị an toàn và hiệu quả, kết hợp giữa tinh hoa y học cổ truyền và công nghệ hiện đại.",
+      image:
+        "./images/dongphuongduong.png", 
+      tags: [
+        "Chăm sóc da",
+        "Massage thư giãn",
+        "Cơ xương khớp thần kinh",
+        "Đào tạo học viên",
+        "Y học cổ truyền",
+      ],
+      category: "phongkham",
+      github: "http://dongphuongduong.com/", // Không áp dụng cho nội dung spa
+      webapp: "http://dongphuongduong.com/",
+    },
+    {
       id: 9,
       title: "Tàu Bến Nghé",
       date: "Jan 2018 - Present",
