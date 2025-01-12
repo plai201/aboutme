@@ -359,6 +359,7 @@ const HeroBgAnimation = () => (
         </linearGradient>
       </defs>
     </svg>
+    
   </Div>
 );
 

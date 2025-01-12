@@ -215,12 +215,12 @@ export const Bio = {
   export const projects = [
     {
       id: 11,
-      title: "Chang Beauty Spa",
-      date: "Jan 2020 - Present",
+      title: "DR4You Luxury",
+      date: "Jan 2024 - Present",
       description:
-        "Chang Beauty Spa là một không gian chăm sóc sắc đẹp chuyên nghiệp, cung cấp các dịch vụ như chăm sóc da, massage thư giãn, trị liệu chuyên sâu và làm đẹp toàn diện. Với đội ngũ chuyên viên giàu kinh nghiệm và công nghệ hiện đại, Chang Beauty Spa cam kết mang đến trải nghiệm thư giãn tuyệt vời và cải thiện sức khỏe làn da của bạn.",
+        "Dr4You Beauty Center đầu tư công nghệ nâng cơ, trẻ hóa da Tightan Oligio từ Wontech, theo đuổi sứ mệnh “Giữ gìn thanh xuân, bảo vệ nhan sắc” cho phái nữ. Bước qua tuổi 25, sự tổng hợp collagen, elastin dần giảm sút do lão hóa nội sinh, ánh nắng mặt trời, stress, ô nhiễm môi trường… dẫn đến làn da chảy xệ, nếp nhăn xuất hiện ngày càng nhiều. Không ít chị em phải tìm đến phẫu thuật thẩm mỹ căng da mặt. Tuy nhiên, trong bối cảnh 4.0, ai cũng muốn đẹp nhanh mà không đau, không xâm lấn.",
       image:
-        "./images/spaChangbeautyq7.png", 
+        "./images/dr4you.png", 
       tags: [
         "Chăm sóc da",
         "Massage thư giãn",
@@ -229,8 +229,8 @@ export const Bio = {
         "Công nghệ hiện đại",
       ],
       category: "beauty",
-      github: "http://changbeautyspa.com/", // Không áp dụng cho nội dung spa
-      webapp: "http://changbeautyspa.com/",
+      github: "https://dr4you.vn/", // Không áp dụng cho nội dung spa
+      webapp: "https://dr4you.vn/",
     },
     {
       id: 9,
@@ -457,6 +457,20 @@ export const Bio = {
       category: "beauty",
       github: "https://linhthi.vn/",
       webapp: "https://linhthi.vn/",
+    },
+    {
+      id: 16,
+      title: "",
+      date: "Jan 2023 - Present",
+      description:
+        "",
+      image:
+        "./images/cybersonlam.png", // Cập nhật link hình ảnh phù hợp
+      tags: [
+      ],
+      category: "gaming",
+      github: "http://www.cybersonlam.com/",
+      webapp: "http://www.cybersonlam.com/",
     },
   ];
   
