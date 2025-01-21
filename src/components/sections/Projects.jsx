@@ -121,16 +121,16 @@ const Projects = () => {
           </ToggleButton>
           <Divider />
           <ToggleButton
-            active={toggle === "am thuc"}
-            onClick={() => setToggle("am thuc")}
+            active={toggle === "phongkham"}
+            onClick={() => setToggle("phongkham")}
           >
             PHÒNG KHÁM
           </ToggleButton>
           <Divider />
 
           <ToggleButton
-            active={toggle === "phongkham"}
-            onClick={() => setToggle("phongkham")}
+            active={toggle === "am thuc"}
+            onClick={() => setToggle("am thuc")}
           >
             NHÀ HÀNG
           </ToggleButton>
