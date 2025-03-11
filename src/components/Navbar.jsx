@@ -156,7 +156,7 @@ const Navbar = () => {
             <NavLink href="#About">Giới Thiệu</NavLink>
             <NavLink href="#Skills">Kỹ Năng</NavLink>
             <NavLink href="#Projects">Dự Án</NavLink>
-            <NavLink href="#Skills">Sở Thích</NavLink>
+            <NavLink href="#Skills">Linh Tinh</NavLink>
             <NavLink href="#Contact">Liên Hệ</NavLink>
           </NavItems>
 
