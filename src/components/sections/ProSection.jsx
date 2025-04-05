@@ -8,6 +8,7 @@ import { Tilt } from 'react-tilt';
 import { motion } from "framer-motion"
 import { headContainerAnimation,headContentAnimation, headTextAnimation } from "../../utils/motion";
 import StarCanvas from "../canvas/Stars";
+import BoxLove from '../BoxLove';
 
 const ProContainer = styled.div`
     display: flex;
@@ -55,6 +56,8 @@ const ProRightContainer = styled.div`
     order: 2;
     display: flex;
     justify-content: end;
+    transform: translateX(-120px); /* Dịch sang trái */
+
     @media (max-width: 960px){
         order: 1;
         display: flex;
@@ -62,6 +65,8 @@ const ProRightContainer = styled.div`
         align-items: center;
         justify-content: center;
         margin-bottom: 80px;
+        transform: translateX(0); /* Trở lại vị trí cũ trên màn nhỏ */
+
     }
     @media (max-width: 640px){
         margin-bottom: 30px;
@@ -231,8 +236,10 @@ const ProSection = () => {
         {/* Phần bên phải - Hiển thị ảnh với hiệu ứng nghiêng */}
         <ProRightContainer>
           <motion.div {...headContentAnimation}>
-            <Tilt> {/* Hiệu ứng nghiêng cho ảnh */}
-              <Img src={ProImage} alt="NguyenThanhTung" /> {/* Hiển thị ảnh đại diện */}
+            <Tilt>
+            <div style={{ maxWidth: '350px' }}>
+              <BoxLove />
+            </div>
             </Tilt>
           </motion.div>
         </ProRightContainer>
