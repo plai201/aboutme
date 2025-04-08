@@ -56,7 +56,7 @@ const ProRightContainer = styled.div`
     order: 2;
     display: flex;
     justify-content: end;
-    transform: translateX(-120px); /* Dịch sang trái */
+    // transform: translateX(-120px); /* Dịch sang trái */
 
     @media (max-width: 960px){
         order: 1;
@@ -65,7 +65,7 @@ const ProRightContainer = styled.div`
         align-items: center;
         justify-content: center;
         margin-bottom: 80px;
-        transform: translateX(0); /* Trở lại vị trí cũ trên màn nhỏ */
+        // transform: translateX(0); /* Trở lại vị trí cũ trên màn nhỏ */
 
     }
     @media (max-width: 640px){
@@ -237,9 +237,7 @@ const ProSection = () => {
         <ProRightContainer>
           <motion.div {...headContentAnimation}>
             <Tilt>
-            <div style={{ maxWidth: '350px' }}>
-              <BoxLove />
-            </div>
+             <Img src={ProImage} alt="NguyenThanhTung" />
             </Tilt>
           </motion.div>
         </ProRightContainer>
